@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Enter your Info</title>
+</head>
+<body>
+<form action="#"
+      th:action="@{/process}"
+      th:object="${addexp}", th:object="${addskill}"
+      method="post">
+    Experience
+    <input type="hidden" th:field="*{id}" />
+    Job Title :<input type="text" th:field="*{jobtitle}" />
+    <span th:if="${#fields.hasErrors('jobtitle')}"
+          th:errors="*{jobtitle}"></span><br />
+
+    Company :<input type="text" th:field="*{employer}" />
+    <span th:if="${#fields.hasErrors('employer')}"
+          th:errors="*{employer}"></span><br />
+
+    Years Worked :<input type="text" th:field="*{yearsworked}" />
+    <span th:if="${#fields.hasErrors('yearsworked')}"
+          th:errors="*{yearsworked}"></span><br />
+
+    Duties :<input type="text" th:field="*{duties}" />
+    <span th:if="${#fields.hasErrors('duties')}"
+          th:errors="*{duties}"></span><br />
+    Experience
+    <input type="hidden" th:field="*{id}" />
+    Skill :<input type="text" th:field="*{particularskill}" />
+    <span th:if="${#fields.hasErrors('particularskill')}"
+          th:errors="*{particularskill}"></span><br />
+
+    Skill level :<input type="text" th:field="*{skilllevel}" />
+    <span th:if="${#fields.hasErrors('skilllevel')}"
+          th:errors="*{skilllevel}"></span><br />
+
+
+
+    <br />
+    <input type="submit" value="Post" />
+    <br />
+</form>
+<
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Your Resume</title>
+</head>
+<body>
+
+<table>
+
+    <tr th:each="expResume : ${exp}">
+        <span th:text="${expResume.jobtitle}"></span><br />
+        <span th:text="${expResume.employer}"></span><br />
+        <span th:text="${expResume.yearsworked}"></span><br /><br />
+
+    </tr>
+</table>
+<br />
+<table>
+
+    <tr th:each="expResume : ${exp}">
+        <span th:text="${skillsResume.particularskill}"></span><br />
+        <span th:text="${skillsResume.skilllevel}"></span><br />
+
+    </tr>
+</table>
+
+</body>
+</html>
