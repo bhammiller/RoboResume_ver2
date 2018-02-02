@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Your Resume</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body style="background-color:powderblue;">
 <br />
+<h1>Resume</h1><br /><br />
 <table>
 
     <tr th:each="wholeResume : ${whole}">
@@ -13,7 +25,7 @@
         <span th:text="${wholeResume.email}"></span><br /><br /><br />
     </tr>
 </table>
-<br />Education<br />
+<br /><h3>Education</h3><br />
 <a th:href="@{/addeducation}">Add</a><br /><br />
 <table>
 
@@ -25,7 +37,7 @@
     </tr>
 </table>
 
-Employment History<br />
+<h3>Work History</h3><br />
 <a th:href="@{/addexp}">Add</a><br /><br />
 <table>
 
@@ -39,7 +51,7 @@ Employment History<br />
 </table>
 <br />
 
-Skills <br />
+<h3>Skills</h3> <br />
 <a th:href="@{/addskills}">Add</a><br /><br />
 <table>
 
@@ -48,6 +60,28 @@ Skills <br />
         <span th:text="${skillsResume.skilllevel}"></span><br /><br /><br />
     </tr>
 </table>
+
+
+
+<!-- Control the column width, and how they should appear on different devices -->
+<div class="row">
+    <div class="col-*-*"></div>
+    <div class="col-*-*"></div>
+</div>
+<div class="row">
+    <div class="col-*-*"></div>
+    <div class="col-*-*"></div>
+    <div class="col-*-*"></div>
+</div>
+
+<!-- Or let Bootstrap automatically handle the layout -->
+<div class="row">
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+</div>
+
+
 
 </body>
 </html>
