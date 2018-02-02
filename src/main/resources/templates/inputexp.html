@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Input Experience</title>
+</head>
+<body>
+<form action="#"
+      th:action="@{/processexp}"
+      th:object="${addexp}"
+      method="post">
+    Experience <br />
+    <input type="hidden" th:field="*{id}" />
+    Job Title :<input type="text" th:field="*{jobtitle}" />
+    <span th:if="${#fields.hasErrors('jobtitle')}"
+          th:errors="*{jobtitle}"></span><br />
+
+    Company :<input type="text" th:field="*{employer}" />
+    <span th:if="${#fields.hasErrors('employer')}"
+          th:errors="*{employer}"></span><br />
+
+    Date Started :<input type="text" th:field="*{yearsstart}" />
+    <span th:if="${#fields.hasErrors('yearsstart')}"
+          th:errors="*{yearsstart}"></span><br />
+
+    Date Ended :<input type="text" th:field="*{yearsend} " />
+    <span th:if="${#fields.hasErrors('yearsend')}"
+          th:errors="*{yearsend}"></span><br />
+
+    Duties :<input type="text" th:field="*{duties}" />
+    <span th:if="${#fields.hasErrors('duties')}"
+          th:errors="*{duties}"></span><br />
+
+    <br />
+    <input type="submit" value="Next" />
+    <br />
+</form>
+<br />
+<a th:href="@{/addskills}">Skip</a><br />
+</body>
+</html>
