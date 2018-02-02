@@ -26,11 +26,16 @@ public class ExpResume {
 
     @NotNull
     @Size(min=1)
-    private String yearsworked;
+    private String yearsstart;
+
+    @NotNull
+    @Size(min=1)
+    private String yearsend;
 
     @NotNull
     @Size(min=1)
     private String duties;
+
 
     public long getId() {
         return id;
@@ -56,12 +61,20 @@ public class ExpResume {
         this.employer = employer;
     }
 
-    public String getYearsworked() {
-        return yearsworked;
+    public String getYearsstart() {
+        return yearsstart;
     }
 
-    public void setYearsworked(String yearsworked) {
-        this.yearsworked = yearsworked;
+    public void setYearsstart(String yearsstart) {
+        this.yearsstart = yearsstart;
+    }
+
+    public String getYearsend() {
+        return yearsend;
+    }
+
+    public void setYearsend(String yearsend) {
+        this.yearsend = yearsend;
     }
 
     public String getDuties() {

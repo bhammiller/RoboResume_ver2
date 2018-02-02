@@ -24,6 +24,7 @@ public class EducationResume {
 
     private String degreeyear;
 
+
     public long getId() {
         return id;
     }

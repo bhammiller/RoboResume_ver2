@@ -22,51 +22,99 @@ public class MainController {
     @Autowired
     SkillRepository skillRepository;
 
+    @Autowired
+    WholeResumeRepository wholeResumeRepository;
 
-    @RequestMapping("/")
-    public String listPosts(Model model, Model model2){
-        model.addAttribute("exp", expRepository.findAll());
-        model2.addAttribute("addskill", new SkillsResume());
-        return "resumeouput";
-    }
 
-    @GetMapping("/add")
-    public String postForm(Model model, Model model2){
-        model.addAttribute("addexp", new ExpResume());
-        model2.addAttribute("addskill", new SkillsResume());
-        return "inputpage";
-    }
-
-    @PostMapping("/add")
-    public String postedForm(Model model, Model model2){
-        model.addAttribute("addexp", new ExpResume());
-        model2.addAttribute("addskill", new SkillsResume());
-        return "inputpage";
+    //Startpoint
+    @GetMapping("/")
+    public String startResumeBuilder(Model model){
+        model.addAttribute("addwhole", new WholeResume());
+        return "resumebuilder";
     }
 
     @PostMapping("/process")
-    public String processForm(@Valid @ModelAttribute("addexp") ExpResume expresume,
-                              @Valid @ModelAttribute("addskill") SkillsResume skillresume, BindingResult result){
+    public String processBegin(@Valid @ModelAttribute("addwhole") WholeResume wholeResume, BindingResult result){
         if (result.hasErrors()){
-            return "inputpage";
+            return "resumebuilder";
+        }
+        wholeResumeRepository.save(wholeResume);
+        return "redirect:/addeducation";
+    }
+
+    //Education Methods
+    @GetMapping("/addeducation")
+    public String educationForm(Model model){
+        model.addAttribute("addeducation", new EducationResume());
+        return "inputeducation";
+    }
+
+    @PostMapping("/addeducation")
+    public String postedEducation(@Valid @ModelAttribute("addeducation") Model model){
+        model.addAttribute("addeducation", new EducationResume());
+        return "inputeducation";
+    }
+
+    @PostMapping("/processeducation")
+    public String processEducation(@Valid @ModelAttribute("addeducation") EducationResume educationResume, BindingResult result){
+        if (result.hasErrors()){
+            return "inputeducation";
+        }
+        educationRepository.save(educationResume);
+        return "redirect:/addexp";
+    }
+
+    //Experience Methods
+    @GetMapping("/addexp")
+    public String expForm(Model model){
+        model.addAttribute("addexp", new ExpResume());
+        return "inputexp";
+    }
+
+    @PostMapping("/addexp")
+    public String postedExp(@Valid @ModelAttribute("addexp") Model model){
+        model.addAttribute("addexp", new ExpResume());
+        return "inputexp";
+    }
+
+    @PostMapping("/processexp")
+    public String processExp(@Valid @ModelAttribute("addexp") ExpResume expresume, BindingResult result){
+        if (result.hasErrors()){
+            return "inputexp";
         }
         expRepository.save(expresume);
-        skillRepository.save(skillresume);
-        return "redirect:/";
-    }
-/*
-
-    @RequestMapping("/update/{id}")
-    public String updateAddress(@PathVariable("id") long id, Model model){
-        model.addAttribute("addpost", postRepository.findOne(id));
-        return "addpostpage";
+        return "redirect:/addskills";
     }
 
-    @RequestMapping("/delete/{id}")
-    public String delAddress(@PathVariable("id") long id){
-        postRepository.delete(id);
-        return "redirect:/";
+    //Skills Methods
+    @GetMapping("/addskills")
+    public String skillsForm(Model model){
+        model.addAttribute("addskill", new SkillsResume());
+        return "inputskills";
     }
-*/
+
+    @PostMapping("/addskills")
+    public String postedSkills(@Valid @ModelAttribute("addskill") Model model){
+        model.addAttribute("addskill", new SkillsResume());
+        return "inputskills";
+    }
+
+    @PostMapping("/processskill")
+    public String processSkills(@Valid @ModelAttribute("addskill") SkillsResume skillsResume, BindingResult result){
+        if (result.hasErrors()){
+            return "inputskills";
+        }
+        skillRepository.save(skillsResume);
+        return "redirect:/complete";
+    }
+
+    @RequestMapping("/complete")
+    public String listAddresses(Model model1, Model model2, Model model3, Model model4){
+        model1.addAttribute("whole", wholeResumeRepository.findAll());
+        model2.addAttribute("education", educationRepository.findAll());
+        model3.addAttribute("experience", expRepository.findAll());
+        model4.addAttribute("skills", skillRepository.findAll());
+        return "resumeouput";
+    }
 
 }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Input skills</title>
+</head>
+<body>
+<form action="#"
+      th:action="@{/processskill}"
+      th:object="${addskill}"
+      method="post">
+    Skills <br />
+    <input type="hidden" th:field="*{id}" />
+    Skill :<input type="text" th:field="*{particularskill}" />
+    <span th:if="${#fields.hasErrors('particularskill')}"
+          th:errors="*{particularskill}"></span><br />
+
+    Skill level :<input type="text" th:field="*{skilllevel}" />
+    <span th:if="${#fields.hasErrors('skilllevel')}"
+          th:errors="*{skilllevel}"></span><br />
+    <br />
+    <input type="submit" value="Complete" />
+    <br />
+</form>
+<a th:href="@{/complete}">Skip and Complete</a><br />
+</body>
+</html>

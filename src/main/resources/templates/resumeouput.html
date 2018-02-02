@@ -5,23 +5,47 @@
     <title>Your Resume</title>
 </head>
 <body>
-
-<table>
-
-    <tr th:each="expResume : ${exp}">
-        <span th:text="${expResume.jobtitle}"></span><br />
-        <span th:text="${expResume.employer}"></span><br />
-        <span th:text="${expResume.yearsworked}"></span><br /><br />
-
-    </tr>
-</table>
 <br />
 <table>
 
-    <tr th:each="expResume : ${exp}">
-        <span th:text="${skillsResume.particularskill}"></span><br />
-        <span th:text="${skillsResume.skilllevel}"></span><br />
+    <tr th:each="wholeResume : ${whole}">
+        Name: <span th:text="${wholeResume.name}"></span><br />
+        Email: <span th:text="${wholeResume.email}"></span><br /><br /><br />
+    </tr>
+</table>
+<br />Education<br />
+<a th:href="@{/addeducation}">Add</a><br />
+<table>
 
+    <tr th:each="educationResume : ${education}">
+        <span th:text="${educationResume.degreetype}"></span><br />
+        <span th:text="${educationResume.degreesubject}"></span><br />
+        <span th:text="${educationResume.schoolplace}"></span><br />
+        <span th:text="${educationResume.degreeyear}"></span><br /><br /><br />
+    </tr>
+</table>
+<br />
+Employment History<br />
+<a th:href="@{/addexp}">Add</a><br />
+<table>
+
+    <tr th:each="expResume : ${experience}">
+        <span th:text="${expResume.jobtitle}"></span><br />
+        <span th:text="${expResume.employer}"></span><br />
+        <span th:text="${expResume.yearsstart}"></span><br />
+        <span th:text="${expResume.yearsend}"></span><br />
+        <span th:text="${expResume.duties}"></span><br /><br /><br />
+    </tr>
+</table>
+<br />
+
+Skills <br />
+<a th:href="@{/addskills}">Add</a><br />
+<table>
+
+    <tr th:each="skillsResume : ${skills}">
+        <span th:text="${skillsResume.particularskill}"></span><br />
+        <span th:text="${skillsResume.skilllevel}"></span><br /><br /><br />
     </tr>
 </table>
 
