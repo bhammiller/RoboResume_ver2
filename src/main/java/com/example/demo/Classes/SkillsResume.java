@@ -17,11 +17,11 @@ public class SkillsResume {
     private long id;
 
     @NotNull
-    @Size(min=1)
+    @Size(min=1, message = "Please enter a skill")
     private String particularskill;
 
     @NotNull
-    @Size(min=1)
+    @Size(min=1, message = "Please enter skill level")
     private String skilllevel;
 
     public long getId() {

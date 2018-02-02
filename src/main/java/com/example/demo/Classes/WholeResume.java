@@ -16,8 +16,12 @@ public class WholeResume {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @NotNull
+    @Size(min=1, message = "Please enter your name")
     private String name;
 
+    @NotNull
+    @Size(min=1, message = "Please your email address")
     private String email;
 
     public long getId() {

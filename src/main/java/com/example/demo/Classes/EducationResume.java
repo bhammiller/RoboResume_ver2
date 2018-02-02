@@ -16,12 +16,20 @@ public class EducationResume {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @NotNull
+    @Size(min=1, message = "Please enter the type of your degree")
     private String degreetype;
 
+    @NotNull
+    @Size(min=1, message = "Please enter subject of study")
     private String degreesubject;
 
+    @NotNull
+    @Size(min=1, message = "Please enter institution of study")
     private String schoolplace;
 
+    @NotNull
+    @Size(min=1, message = "Please enter graduation year")
     private String degreeyear;
 
 

@@ -17,23 +17,23 @@ public class ExpResume {
     private long id;
 
     @NotNull
-    @Size(min=1)
+    @Size(min=1, message="Please enter your job title")
     private String jobtitle;
 
     @NotNull
-    @Size(min=1)
+    @Size(min=1, message = "please enter your employer")
     private String employer;
 
     @NotNull
-    @Size(min=1)
+    @Size(min=1, message = "please enter starting year")
     private String yearsstart;
 
     @NotNull
-    @Size(min=1)
+    @Size(min=1, message = "please enter end date")
     private String yearsend;
 
     @NotNull
-    @Size(min=1)
+    @Size(min=1, message = "please enter your duties")
     private String duties;
 
 
