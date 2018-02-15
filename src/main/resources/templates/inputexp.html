@@ -3,39 +3,78 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Input Experience</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <link href="/stylesheet.css" rel="stylesheet"/>
 </head>
-<body style="background-color:powderblue;">
-<form action="#"
-      th:action="@{/processexp}"
-      th:object="${addexp}"
-      method="post">
+<body>
+<div th:replace="/template::navbarfragement">
+</div>
+<div class="container-fluid">
     <h2>Work History</h2> <br />
-    <input type="hidden" th:field="*{id}" />
-    Job Title :<input type="text" th:field="*{jobtitle}" />
-    <span th:if="${#fields.hasErrors('jobtitle')}"
-          th:errors="*{jobtitle}"></span><br />
+    <form action="#"
+          th:action="@{/processexp}"
+          th:object="${addexp}"
+          method="post">
+        <input type="hidden" th:field="*{id}" />
+        <div class="form-group row">
+            <label for="inputJobtitle" class="col-sm-2 col-form-label">Job Title :</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="inputJobtitle" th:field="*{jobtitle}" placeholder="Job Title" />
+                <small class="form-text text-muted">Required</small>
+                <span th:if="${#fields.hasErrors('jobtitle')}"
+                      th:errors="*{jobtitle}" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmployer" class="col-sm-2 col-form-label">Company :</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="inputEmployer" th:field="*{employer}" placeholder="Company" />
+                <small class="form-text text-muted">Required</small>
+                <span th:if="${#fields.hasErrors('employer')}"
+                      th:errors="*{employer}" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputYearsstart" class="col-sm-2 col-form-label">Date Started :</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="inputYearsstart" th:field="*{yearsstart}" placeholder="Date Started" />
+                <small class="form-text text-muted">Required</small>
+                <span th:if="${#fields.hasErrors('yearsstart')}"
+                      th:errors="*{yearsstart}" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputYearsend" class="col-sm-2 col-form-label">Date Ended :</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="inputYearsend" th:field="*{yearsend}" placeholder="Date Ended"/>
+                <small class="form-text text-muted">Required</small>
+                <span th:if="${#fields.hasErrors('yearsend')}"
+                      th:errors="*{yearsend}"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputDuties" class="col-sm-2 col-form-label">Duties :</label>
+            <div class="col-sm-5">
+                <textarea class="form-control" rows="5" id="inputDuties" th:field="*{duties}" placeholder="Duties"></textarea>
+                <small class="form-text text-muted">Required</small>
+                <span th:if="${#fields.hasErrors('duties')}"
+                      th:errors="*{duties}"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Add Experience</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    Company :<input type="text" th:field="*{employer}" />
-    <span th:if="${#fields.hasErrors('employer')}"
-          th:errors="*{employer}"></span><br />
-
-    Date Started :<input type="text" th:field="*{yearsstart}" />
-    <span th:if="${#fields.hasErrors('yearsstart')}"
-          th:errors="*{yearsstart}"></span><br />
-
-    Date Ended :<input type="text" th:field="*{yearsend} " />
-    <span th:if="${#fields.hasErrors('yearsend')}"
-          th:errors="*{yearsend}"></span><br />
-
-    Duties :<input type="text" th:field="*{duties}" />
-    <span th:if="${#fields.hasErrors('duties')}"
-          th:errors="*{duties}"></span><br />
-
-    <br />
-    <input type="submit" value="Next" />
-    <br />
-</form>
-<br />
-<a th:href="@{/addskills}">Skip</a><br />
 </body>
 </html>

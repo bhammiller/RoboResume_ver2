@@ -1,5 +1,9 @@
 package com.example.demo.Classes;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.URL;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,8 +25,20 @@ public class WholeResume {
     private String name;
 
     @NotNull
-    @Size(min=1, message = "Please your email address")
+    @Email(message = "Please your email address")
     private String email;
+
+    @NotNull
+    @NotEmpty
+    private String yousummary;
+
+    @NotNull
+    @NotEmpty
+    private String coverletter;
+
+    @NotNull
+    @URL
+    private String youimage;
 
     public long getId() {
         return id;
@@ -46,5 +62,29 @@ public class WholeResume {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getYousummary() {
+        return yousummary;
+    }
+
+    public void setYousummary(String yousummary) {
+        this.yousummary = yousummary;
+    }
+
+    public String getCoverletter() {
+        return coverletter;
+    }
+
+    public void setCoverletter(String coverletter) {
+        this.coverletter = coverletter;
+    }
+
+    public String getYouimage() {
+        return youimage;
+    }
+
+    public void setYouimage(String youimage) {
+        this.youimage = youimage;
     }
 }

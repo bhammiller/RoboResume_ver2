@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <title>Input skills</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <link href="/stylesheet.css" rel="stylesheet"/>
 </head>
-<body style="background-color:powderblue;">
+<body>
+<div th:replace="/template::navbarfragement">
+</div>
 <form action="#"
       th:action="@{/processskill}"
       th:object="${addskill}"
@@ -22,6 +27,72 @@
     <input type="submit" value="Complete" />
     <br />
 </form>
-<a th:href="@{/complete}">Skip and Complete</a><br />
+
+
+<div class="container-fluid">
+    <form action="#"
+          th:action="@{/processskill}"
+          th:object="${addskill}"
+          method="post">
+        <input type="hidden" th:field="*{id}" />
+        <div class="form-group row">
+            <label for="inputSkill" class="col-sm-2 col-form-label">Skill </label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="inputSkill" th:field="*{particularskill}" placeholder="Skill" />
+                <small class="form-text text-muted">Required</small>
+                <span th:if="${#fields.hasErrors('particularskill')}"
+                      th:errors="*{particularskill}" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputSkilllevel" class="col-sm-2 col-form-label">Skill level</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="inputSkilllevel" th:field="*{skilllevel}" placeholder="Skill level" />
+                <small class="form-text text-muted">Required</small>
+                <span th:if="${#fields.hasErrors('skilllevel')}"
+                      th:errors="*{skilllevel}" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputYear" class="col-sm-2 col-form-label">Year of Publication</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="inputYear" th:field="*{publicationyear}" placeholder="Publication Year" />
+                <small class="form-text text-muted">Required</small>
+                <span th:if="${#fields.hasErrors('publicationyear')}"
+                      th:errors="*{publicationyear}" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputISBN" class="col-sm-2 col-form-label">ISBN Number</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="inputISBN" th:field="*{isbn}" placeholder="ISBN Number"/>
+                <small class="form-text text-muted">Optional</small>
+                <span th:if="${#fields.hasErrors('isbn')}"
+                      th:errors="*{isbn}"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputImage" class="col-sm-2 col-form-label">Image</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="inputImage" th:field="*{bookimage}" placeholder="Image URL"/>
+                <small class="form-text text-muted">Optional</small>
+                <span th:if="${#fields.hasErrors('bookimage')}"
+                      th:errors="*{bookimage}"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Add Book</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </body>
 </html>

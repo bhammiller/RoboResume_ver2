@@ -3,34 +3,71 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Input Education</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <link href="/stylesheet.css" rel="stylesheet"/>
 </head>
-<body style="background-color:powderblue;">
-<form action="#"
-      th:action="@{/processeducation}"
-      th:object="${addeducation}"
-      method="post">
+<body>
+<div th:replace="/template::navbarfragement">
+</div>
+
+<div class="container-fluid">
     <h2>Education</h2><br />
-    <input type="hidden" th:field="*{id}" />
-    Degree Subject :<input type="text" th:field="*{degreesubject}" />
-    <span th:if="${#fields.hasErrors('degreesubject')}"
-          th:errors="*{degreesubject}"></span><br />
+    <form action="#"
+          th:action="@{/processeducation}"
+          th:object="${addeducation}"
+          method="post">
+        <input type="hidden" th:field="*{id}" />
+        <div class="form-group row">
+            <label for="inputDegreesubject" class="col-sm-2 col-form-label">Degree Subject :</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="inputDegreesubject" th:field="*{degreesubject}" placeholder="Degree Subject" />
+                <small class="form-text text-muted">Required</small>
+                <span th:if="${#fields.hasErrors('degreesubject')}"
+                      th:errors="*{degreesubject}" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputDegreetype" class="col-sm-2 col-form-label">Degree Type :</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="inputDegreetype" th:field="*{degreetype}" placeholder="Degree Type" />
+                <small class="form-text text-muted">Required</small>
+                <span th:if="${#fields.hasErrors('degreetype')}"
+                      th:errors="*{degreetype}" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputSchoolplace" class="col-sm-2 col-form-label">School :</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="inputSchoolplace" th:field="*{schoolplace}" placeholder="Institution" />
+                <small class="form-text text-muted">Required</small>
+                <span th:if="${#fields.hasErrors('schoolplace')}"
+                      th:errors="*{schoolplace}" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputDegreeyear" class="col-sm-2 col-form-label">Date Graduated :</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="inputDegreeyear" th:field="*{degreeyear}" placeholder="Date of Graduation"/>
+                <small class="form-text text-muted">Optional</small>
+                <span th:if="${#fields.hasErrors('degreeyear')}"
+                      th:errors="*{degreeyear}"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Add Education</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    Degree Type :<input type="text" th:field="*{degreetype}" />
-    <span th:if="${#fields.hasErrors('degreetype')}"
-          th:errors="*{degreetype}"></span><br />
 
-    School :<input type="text" th:field="*{schoolplace}" />
-    <span th:if="${#fields.hasErrors('schoolplace')}"
-          th:errors="*{schoolplace}"></span><br />
-
-    Date Graduated :<input type="text" th:field="*{degreeyear} " />
-    <span th:if="${#fields.hasErrors('degreeyear')}"
-          th:errors="*{degreeyear}"></span><br />
-
-    <br />
-    <input type="submit" value="Next" />
-    <br />
-</form>
-<a th:href="@{/addexp}">Skip</a><br />
 </body>
 </html>
