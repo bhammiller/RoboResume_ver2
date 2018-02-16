@@ -39,15 +39,11 @@ public class MainController {
 
 
     // Security Methods
-    @GetMapping("/login")
+    @RequestMapping("/login")
     public String login(){
         return "login";
     }
 
-    @PostMapping("/login")
-    public String login2(){
-        return "redirect:/";
-    }
 
 
     @GetMapping("/register")
