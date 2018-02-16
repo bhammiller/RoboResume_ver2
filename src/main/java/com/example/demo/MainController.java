@@ -37,7 +37,7 @@ public class MainController {
 
 
     // Contact Information Methods
-    @GetMapping("/begin")
+    @GetMapping("/contact")
     public String startContact(Model model){
         model.addAttribute("addwhole", new WholeResume());
         return "resumebuilder";
@@ -49,7 +49,7 @@ public class MainController {
             return "resumebuilder";
         }
         wholeResumeRepository.save(wholeResume);
-        return "redirect:/begin";
+        return "redirect:/contact";
     }
 
     @RequestMapping("/updatecontact/{id}")
