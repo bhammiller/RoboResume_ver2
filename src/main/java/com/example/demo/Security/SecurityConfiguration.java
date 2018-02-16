@@ -37,7 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/addreferals","/updatecover/{id}","/deletecover/{id}","/processsummary","/updatesummary/{id}","/deletesummary/{id}").hasAuthority("APPLICANT")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").successForwardUrl("/").failureForwardUrl("/").permitAll()
+                .formLogin().loginPage("/login").permitAll()
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

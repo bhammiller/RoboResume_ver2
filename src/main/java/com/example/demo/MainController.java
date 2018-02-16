@@ -69,7 +69,7 @@ public class MainController {
             userRepository.save(newUser);
             newUser.addRole(r);
             userRepository.save(newUser);
-            return "redirect:/private";
+            return "redirect:/";
         }
     }
 
