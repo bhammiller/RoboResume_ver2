@@ -39,6 +39,7 @@ public class MainController {
     // Contact Information Methods
     @GetMapping("/contact")
     public String startContact(Model model){
+        model.addAttribute("whole", wholeResumeRepository.findAll());
         model.addAttribute("addwhole", new WholeResume());
         return "resumebuilder";
     }
@@ -53,7 +54,8 @@ public class MainController {
     }
 
     @RequestMapping("/updatecontact/{id}")
-    public String updateContact(@PathVariable("id") long id, Model model){
+    public String updateContact(@PathVariable("id") long id, Model model) {
+        model.addAttribute("whole", wholeResumeRepository.findAll());
         model.addAttribute("addwhole", wholeResumeRepository.findOne(id));
         return "resumebuilder";
     }
@@ -62,12 +64,14 @@ public class MainController {
     // Education Methods
     @GetMapping("/addeducation")
     public String educationForm(Model model){
+        model.addAttribute("education", educationRepository.findAll());
         model.addAttribute("addeducation", new EducationResume());
         return "inputeducation";
     }
 
     @PostMapping("/addeducation")
     public String postedEducation(@Valid @ModelAttribute("addeducation") Model model){
+        model.addAttribute("education", educationRepository.findAll());
         model.addAttribute("addeducation", new EducationResume());
         return "inputeducation";
     }
@@ -83,6 +87,7 @@ public class MainController {
 
     @RequestMapping("/updateeducation/{id}")
     public String updateEducation(@PathVariable("id") long id, Model model){
+        model.addAttribute("education", educationRepository.findAll());
         model.addAttribute("addeducation", educationRepository.findOne(id));
         return "inputeducation";
     }
@@ -96,12 +101,14 @@ public class MainController {
     // Experience Methods
     @GetMapping("/addexp")
     public String expForm(Model model){
+        model.addAttribute("experience", expRepository.findAll());
         model.addAttribute("addexp", new ExpResume());
         return "inputexp";
     }
 
     @PostMapping("/addexp")
     public String postedExp(@Valid @ModelAttribute("addexp") Model model){
+        model.addAttribute("experience", expRepository.findAll());
         model.addAttribute("addexp", new ExpResume());
         return "inputexp";
     }
@@ -117,6 +124,7 @@ public class MainController {
 
     @RequestMapping("/updateexp/{id}")
     public String updateExp(@PathVariable("id") long id, Model model){
+        model.addAttribute("experience", expRepository.findAll());
         model.addAttribute("addexp", expRepository.findOne(id));
         return "inputexp";
     }
@@ -130,12 +138,14 @@ public class MainController {
     // Skills Methods
     @GetMapping("/addskills")
     public String skillsForm(Model model){
+        model.addAttribute("skills", skillRepository.findAll());
         model.addAttribute("addskill", new SkillsResume());
         return "inputskills";
     }
 
     @PostMapping("/addskills")
     public String postedSkills(@Valid @ModelAttribute("addskill") Model model){
+        model.addAttribute("skills", skillRepository.findAll());
         model.addAttribute("addskill", new SkillsResume());
         return "inputskills";
     }
@@ -151,6 +161,7 @@ public class MainController {
 
     @RequestMapping("/updateskill/{id}")
     public String updateSkill(@PathVariable("id") long id, Model model){
+        model.addAttribute("skills", skillRepository.findAll());
         model.addAttribute("addskills", skillRepository.findOne(id));
         return "addressform";
     }
@@ -164,12 +175,14 @@ public class MainController {
     // References Methods
     @GetMapping("/addreferals")
     public String refForm(Model model){
+        model.addAttribute("referes", referenceRepository.findAll());
         model.addAttribute("addreferals", new References());
         return "referalpage";
     }
 
     @PostMapping("/addreferals")
     public String postedRef(@Valid @ModelAttribute("addreferals") Model model){
+        model.addAttribute("referes", referenceRepository.findAll());
         model.addAttribute("addreferals", new References());
         return "referalpage";
     }
@@ -185,6 +198,7 @@ public class MainController {
 
     @RequestMapping("/updateref/{id}")
     public String updateRef(@PathVariable("id") long id, Model model){
+        model.addAttribute("referes", referenceRepository.findAll());
         model.addAttribute("addreferals", referenceRepository.findOne(id));
         return "referalpage";
     }
@@ -199,12 +213,14 @@ public class MainController {
     // Cover Letter Methods
     @GetMapping("/addcover")
     public String coverForm(Model model){
+        model.addAttribute("whole", wholeResumeRepository.findAll());
         model.addAttribute("addcover", new WholeResume());
         return "coverletter";
     }
 
     @PostMapping("/addcover")
     public String postedCover(@Valid @ModelAttribute("addcover") Model model){
+        model.addAttribute("whole", wholeResumeRepository.findAll());
         model.addAttribute("addcover", new WholeResume());
         return "coverletter";
     }
@@ -220,6 +236,7 @@ public class MainController {
 
     @RequestMapping("/updatecover/{id}")
     public String updateCover(@PathVariable("id") long id, Model model){
+        model.addAttribute("whole", wholeResumeRepository.findAll());
         model.addAttribute("addcover", wholeResumeRepository.findOne(id));
         return "coverletter";
     }
@@ -234,12 +251,14 @@ public class MainController {
     // Summary Methods
     @GetMapping("/addsummary")
     public String summaryForm(Model model){
+        model.addAttribute("whole", wholeResumeRepository.findAll());
         model.addAttribute("addsummary", new WholeResume());
         return "summary";
     }
 
     @PostMapping("/addsummary")
     public String postedSummary(@Valid @ModelAttribute("addskill") Model model){
+        model.addAttribute("whole", wholeResumeRepository.findAll());
         model.addAttribute("addsummary", new WholeResume());
         return "summary";
     }
@@ -255,6 +274,7 @@ public class MainController {
 
     @RequestMapping("/updatesummary/{id}")
     public String updateSummary(@PathVariable("id") long id, Model model){
+        model.addAttribute("whole", wholeResumeRepository.findAll());
         model.addAttribute("addsummary", wholeResumeRepository.findOne(id));
         return "addressform";
     }
