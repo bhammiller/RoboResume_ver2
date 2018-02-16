@@ -35,11 +35,18 @@ public class MainController {
     @Autowired
     RoleRepository roleRepository;
 
+    public WholeResume wholeResumeM =new WholeResume();
+
 
     // Security Methods
     @GetMapping("/login")
     public String login(){
         return "login";
+    }
+
+    @PostMapping("/login")
+    public String login2(){
+        return "redirect:/";
     }
 
 

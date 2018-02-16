@@ -15,6 +15,7 @@
         <div class="col-sm"><h1>Contact</h1><br />
             <div class="row" th:each="wholeResume : ${whole}">
                 <div class="col-sm-2">
+                    <img  th:src="${wholeResume.youimage}"  alt="Applicant Picture" style="width:200px;height:300px;"/>
                     <span th:text="${wholeResume.name}"></span><br />
                     <span th:text="${wholeResume.email}"></span><br /><br /><br />
                     <a type="button" th:href="@{/updatecontact/{id}(id=${wholeResume.id})}" class="btn btn-dark" role="button">Update</a><br />
