@@ -28,11 +28,10 @@ public class WholeResume {
     @Email(message = "Please your email address")
     private String email;
 
-
-
+    @Size(min=1)
     private String yousummary;
 
-
+    @Size(min=1)
     private String coverletter;
 
     @URL

@@ -318,7 +318,7 @@ public class MainController {
     public String updateSummary(@PathVariable("id") long id, Model model){
         model.addAttribute("whole", wholeResumeRepository.findAll());
         model.addAttribute("addsummary", wholeResumeRepository.findOne(id));
-        return "addressform";
+        return "summary";
     }
 
     @RequestMapping("/deletesummary/{id}")
