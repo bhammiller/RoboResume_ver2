@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="www.thymeleaf.org"
+      xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <title>Summary</title>
     <th:block th:replace="/template :: headstuff"></th:block>
@@ -7,7 +8,7 @@
 <body>
 <div th:replace="/template::navbarfragement">
 </div>
-<div class="container-fluid">
+<div sec:authorize="hasAuthority('APPLICANT')" class="container-fluid">
     <h2>Summary</h2> <br />
     <div class="container">
         <h3>Input</h3>

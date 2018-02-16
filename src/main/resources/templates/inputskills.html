@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="www.thymeleaf.org"
+      xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <title>Input skills</title>
     <th:block th:replace="/template :: headstuff"></th:block>
@@ -10,7 +11,7 @@
 
 <div class="container-fluid">
     <h2>Skills</h2><br />
-    <div class="container">
+    <div sec:authorize="hasAuthority('APPLICANT')" class="container">
     <h3>Input</h3>
     <form action="#"
           th:action="@{/processskill}"

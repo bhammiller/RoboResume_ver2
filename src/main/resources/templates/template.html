@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="www.thymeleaf.org"
+      xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
 <head >
     <title>Bootstrap 101 Template Integration</title>
     <th:block th:fragment="headstuff">
@@ -38,7 +39,7 @@
         <li class="nav-item">
             <a class="nav-link" th:href="@{/addskills}">Skills</a>
         </li>
-        <li class="nav-item">
+        <li sec:authorize="hasAuthority('APPLICANT')" class="nav-item">
             <a class="nav-link" th:href="@{/addreferals}">References</a>
         </li>
 
@@ -51,6 +52,15 @@
                 <a class="dropdown-item" th:href="@{/complete}">Completed Resume</a>
                 <a class="dropdown-item" th:href="@{/addcover}">Cover Letter</a>
             </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/login}"> Login</a>
+        </li>
+        <li sec:authorize="hasAuthority('APPLICANT')" class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/register}"> Register</a>
         </li>
     </ul>
 </nav>

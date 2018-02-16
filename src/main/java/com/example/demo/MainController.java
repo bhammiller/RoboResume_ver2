@@ -2,6 +2,7 @@ package com.example.demo;
 
 import com.example.demo.Classes.*;
 import com.example.demo.Repositories.*;
+import com.example.demo.Security.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +28,47 @@ public class MainController {
 
     @Autowired
     ReferenceRepository referenceRepository;
+
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    RoleRepository roleRepository;
+
+
+    // Security Methods
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
+
+
+    @GetMapping("/register")
+    public String registerUser(Model model)
+    {
+        model.addAttribute("newUser",new User());
+        return "registration";
+    }
+
+    @PostMapping("/register")
+    public String addNewUser(@Valid @ModelAttribute("NewUser") User newUser, BindingResult result, Model model)
+    {
+
+        if(result.hasErrors())
+        {
+            System.out.println(result.toString());
+            return "registration";
+        }
+        else{
+            //Create a new ordinary user
+            model.addAttribute(newUser.getUsername()+" created");
+            Role r = roleRepository.findByRole("APPLICANT");
+            userRepository.save(newUser);
+            newUser.addRole(r);
+            userRepository.save(newUser);
+            return "redirect:/private";
+        }
+    }
 
 
     // Homepage Methods

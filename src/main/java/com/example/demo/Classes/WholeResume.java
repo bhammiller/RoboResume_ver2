@@ -20,23 +20,21 @@ public class WholeResume {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @NotNull
+
     @Size(min=1, message = "Please enter your name")
     private String name;
 
-    @NotNull
+
     @Email(message = "Please your email address")
     private String email;
 
-    @NotNull
-    @NotEmpty
+
+
     private String yousummary;
 
-    @NotNull
-    @NotEmpty
+
     private String coverletter;
 
-    @NotNull
     @URL
     private String youimage;
 
